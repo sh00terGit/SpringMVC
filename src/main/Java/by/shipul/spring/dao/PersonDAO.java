@@ -10,14 +10,15 @@ import java.util.List;
 public class PersonDAO {
 
     private List<Person> people;
+    private static int PEOPLE_COUNT;
 
     {
         people = new ArrayList<>();
-        people.add(new Person(1,"Andrey"));
-        people.add(new Person(2,"Tom"));
-        people.add(new Person(3,"Sasha"));
-        people.add(new Person(4,"Valera"));
-        people.add(new Person(5,"Richard"));
+        people.add(new Person(++PEOPLE_COUNT,"Andrey"));
+        people.add(new Person(++PEOPLE_COUNT,"Tom"));
+        people.add(new Person(++PEOPLE_COUNT,"Sasha"));
+        people.add(new Person(++PEOPLE_COUNT,"Valera"));
+        people.add(new Person(++PEOPLE_COUNT,"Richard"));
     }
 
     public List<Person> index() {
@@ -26,5 +27,10 @@ public class PersonDAO {
 
     public Person show(int id) {
         return people.stream().filter(person -> person.getId() == id).findAny().orElse(null);
+    }
+
+    public void save(Person person) {
+        person.setId(++PEOPLE_COUNT);
+        people.add(person);
     }
 }
