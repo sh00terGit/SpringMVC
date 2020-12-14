@@ -8,6 +8,8 @@
 
     <!--/*@thymesVar id="person" type="by.shipul.spring.models.Person"*/-->
     <p th:text="${person.getName()}"></p>
+    <p th:text="${person.getSurname()}"></p>
+    <p th:text="${person.getEmail()}"></p>
     <p th:text="${person.getId()}"></p>
     <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
 
